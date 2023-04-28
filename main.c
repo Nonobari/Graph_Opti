@@ -2,15 +2,51 @@
 #include <stdlib.h>
 #include "graph.h"
 
-
+void menu(Graph *g)
+{
+    int choice;
+    do
+    {
+        printf("\n0. Exit\n");
+        printf("1. Init graph\n");
+        printf("2. Input graph\n");
+        printf("3. Save graph\n");
+        printf("4. Load graph\n");
+        printf("5. Print graph\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 0:
+            break;
+        case 1:
+            init_graph(g);
+            break;
+        case 2:
+            input_graph(g, 0);
+            break;
+        case 3:
+            save_graph(g, "graph.txt");
+            break;
+        case 4:
+            load_graph(g, "graph.txt");
+            break;
+        case 5:
+            print_graph(g);
+            break;
+        case 6:
+            printf("Bye\n");
+            break;
+        default:
+            printf("Invalid choice\n");
+            break;
+        }
+    } while (choice != 0);
+}
 
 int main()
 {
     Graph g;
-    int n_vertex = 6;
-    init_graph(&g);
-    input_graph(&g, 0);
-    save_graph(&g,  "graph.txt");
-    printf("ok\n");
+    menu(&g);
     return 0;
 }

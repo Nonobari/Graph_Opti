@@ -17,6 +17,7 @@ void init_graph(Graph *g)
             g->matrix[i][j] = 0;
         }
     }
+    printf("Graph successfully initialised\n");
 }
 
 void input_graph(Graph *g, int is_directed)
@@ -29,13 +30,30 @@ void input_graph(Graph *g, int is_directed)
         if (!is_directed)
         {
             scanf("%d %d %d", &start, &end, &weight);
-            g->matrix[start][end] = weight;
-            g->matrix[end][start] = weight;
+            if (start >= g->n_vertex || end >= g->n_vertex)
+            {
+                printf("\nError : Invalid edge, vertex index must begin at 0\n");
+                i--;
+                continue;
+            }
+            else
+            {
+                g->matrix[start][end] = weight;
+                g->matrix[end][start] = weight;
+            }
+            
         }
         else
         {
             scanf("%d %d %d", &start, &end, &weight);
-            g->matrix[start][end] = weight;
+            if (start >= g->n_vertex || end >= g->n_vertex)
+            {
+                printf("\nError : Invalid edge, vertex index must begin at 0\n");
+                i--;
+                continue;
+            }
+            else
+                g->matrix[start][end] = weight;
         }
     }
 }
