@@ -41,15 +41,15 @@ void menu(Graph *g)
             break;
         case 6:
             if (parcours_eulerien(g))
-                printf("Le graphe admet un parcours eulerien\n");
+                printf("The graph admits an Eulerian path\n");
             else
-                printf("Le graphe n'admet pas de parcours eulerien\n");
+                printf("The graph doesn't admit an Eulerian path\n");
             break;
         case 7:
             if (cycle_eulerien(g))
-                printf("Le graphe admet un cycle eulerien\n");
+                printf("The graph admits an Eulerian cycle\n");
             else
-                printf("Le graphe n'admet pas de cycle eulerien\n");
+                printf("The graph doesn't admit an Eulerian cycle\n");
             break;
         case 8:
             parcours_profondeur(g, 0);
@@ -57,7 +57,7 @@ void menu(Graph *g)
         case 9:
             parcours_largeur(g, 0);
             break;
-            
+
         default:
             printf("Invalid choice\n");
             break;
