@@ -2,6 +2,16 @@
 
 ## How to use
 
+For linux users:
+
+    make main
+    ./main
+
+You can make the command:
+
+    make clean
+to delete all .o files and the main executable
+
 
 ## Author
 
