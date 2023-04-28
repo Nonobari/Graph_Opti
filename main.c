@@ -17,6 +17,7 @@ void menu(Graph *g)
         printf("6. Check if graph has eulerian path\n");
         printf("7. Check if graph has eulerian cycle\n");
         printf("8. Depth first search\n");
+        printf("9. Breadth first search\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
         switch (choice)
@@ -53,7 +54,10 @@ void menu(Graph *g)
         case 8:
             parcours_profondeur(g, 0);
             break;
-
+        case 9:
+            parcours_largeur(g, 0);
+            break;
+            
         default:
             printf("Invalid choice\n");
             break;
