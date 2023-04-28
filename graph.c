@@ -76,6 +76,7 @@ void load_graph(Graph *g, char *filename)
     }
     else
     {
+        //initialisation du graphe
         fscanf(f, "%d", &g->n_vertex);
         fscanf(f, "%d", &g->n_edge);
         g->matrix = (int **)malloc(sizeof(int *) * g->n_vertex);
@@ -88,9 +89,8 @@ void load_graph(Graph *g, char *filename)
             }
         }
         int start, end, weight;
-        for (int i = 0; i < g->n_edge; i++)
+        while(fscanf(f, "%d %d %d", &start, &end, &weight)!=EOF)
         {
-            fscanf(f, "%d %d %d", &start, &end, &weight);
             g->matrix[start][end] = weight;
         }
         fclose(f);
