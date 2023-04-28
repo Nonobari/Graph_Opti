@@ -26,7 +26,7 @@ void input_graph(Graph *g, int is_directed)
     int weight;
     for (int i = 0; i < g->n_edge; i++)
     {
-        printf("Enter the start, end, weight of edge %d: ", i + 1);
+        printf("Enter the start, end, weight of edge %d: ", i+1);
         if (!is_directed)
         {
             scanf("%d %d %d", &start, &end, &weight);
@@ -127,4 +127,62 @@ void print_graph(Graph *g)
         }
         printf("\n");
     }
+}
+
+int parcours_eulerien(Graph *g)
+//renvoi 1 si le graphe admet un parcours eulerien (on peut le parcourir sans lever le stylo)  renvoi 0 sinon.
+{
+    int *degres = (int *) malloc(sizeof(int) * g->n_vertex);
+    int somme = 0;
+    for (int i = 0; i < g->n_vertex; i++)
+    {
+        degres[i] = 0;
+        for (int j = 0; j < g->n_vertex; j++)
+        {
+            if (g->matrix[i][j] != 0)
+            {
+                degres[i]++;
+                somme++;
+            }
+        }
+    }
+    int n_vertex_pair = 0;
+    for (int i = 0; i < g->n_vertex; i++)
+    {
+        if (degres[i] % 2 == 0)
+            n_vertex_pair++;
+    }
+    if (n_vertex_pair >= g->n_vertex - 2)
+        return 1;
+    else
+        return 0;
+}
+
+int cycle_eulerien(Graph *g)
+//renvoi 1 si le graphe admet un cycle eulerien (on peut le parcourir sans lever le stylo et retourner au sommet de depart)  renvoi 0 sinon
+{
+    int *degres = (int *) malloc(sizeof(int) * g->n_vertex);
+    int somme = 0;
+    for (int i = 0; i < g->n_vertex; i++)
+    {
+        degres[i] = 0;
+        for (int j = 0; j < g->n_vertex; j++)
+        {
+            if (g->matrix[i][j] != 0)
+            {
+                degres[i]++;
+                somme++;
+            }
+        }
+    }
+    int n_vertex_pair = 0;
+    for (int i = 0; i < g->n_vertex; i++)
+    {
+        if (degres[i] % 2 == 0)
+            n_vertex_pair++;
+    }
+    if (n_vertex_pair == g->n_vertex)
+        return 1;
+    else
+        return 0;
 }

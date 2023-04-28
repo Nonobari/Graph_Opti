@@ -10,3 +10,5 @@ void input_graph(Graph *g, int is_directed);
 void save_graph(Graph *g, char *filename);
 void load_graph(Graph *g, char *filename);
 void print_graph(Graph *g);
+int parcours_eulerien(Graph *g);
+int cycle_eulerien(Graph *g);

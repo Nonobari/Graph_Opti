@@ -13,6 +13,8 @@ void menu(Graph *g)
         printf("3. Save graph\n");
         printf("4. Load graph\n");
         printf("5. Print graph\n");
+        printf("6. Check if graph has eulerian path\n");
+        printf("7. Check if graph has eulerian cycle\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
         switch (choice)
@@ -35,7 +37,16 @@ void menu(Graph *g)
             print_graph(g);
             break;
         case 6:
-            printf("Bye\n");
+            if (parcours_eulerien(g))
+                printf("Le graphe admet un parcours eulerien\n");
+            else
+                printf("Le graphe n'admet pas de parcours eulerien\n");
+            break;
+        case 7:
+            if (cycle_eulerien(g))
+                printf("Le graphe admet un cycle eulerien\n");
+            else
+                printf("Le graphe n'admet pas de cycle eulerien\n");
             break;
         default:
             printf("Invalid choice\n");
