@@ -1,3 +1,6 @@
+#ifndef GRAPH_H
+#define GRAPH_H
+
 typedef struct _graph
 {
     int n_vertex;
@@ -12,3 +15,5 @@ void load_graph(Graph *g, char *filename);
 void print_graph(Graph *g);
 int parcours_eulerien(Graph *g);
 int cycle_eulerien(Graph *g);
+
+#endif

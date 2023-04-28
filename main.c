@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "graph.h"
+#include "algo.h"
 
 void menu(Graph *g)
 {
@@ -15,6 +16,7 @@ void menu(Graph *g)
         printf("5. Print graph\n");
         printf("6. Check if graph has eulerian path\n");
         printf("7. Check if graph has eulerian cycle\n");
+        printf("8. Depth first search\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
         switch (choice)
@@ -48,6 +50,10 @@ void menu(Graph *g)
             else
                 printf("Le graphe n'admet pas de cycle eulerien\n");
             break;
+        case 8:
+            parcours_profondeur(g, 0);
+            break;
+
         default:
             printf("Invalid choice\n");
             break;
