@@ -65,3 +65,48 @@ void save_graph(Graph *g, char *filename)
         fclose(f);
     }
 }
+
+void load_graph(Graph *g, char *filename)
+{
+    FILE *f = fopen(filename, "r");
+    if (f == NULL)
+    {
+        printf("Cannot open file %s\n", filename);
+        return;
+    }
+    else
+    {
+        fscanf(f, "%d", &g->n_vertex);
+        fscanf(f, "%d", &g->n_edge);
+        g->matrix = (int **)malloc(sizeof(int *) * g->n_vertex);
+        for (int i = 0; i < g->n_vertex; i++)
+        {
+            g->matrix[i] = (int *)malloc(sizeof(int) * g->n_vertex);
+            for (int j = 0; j < g->n_vertex; j++)
+            {
+                g->matrix[i][j] = 0;
+            }
+        }
+        int start, end, weight;
+        for (int i = 0; i < g->n_edge; i++)
+        {
+            fscanf(f, "%d %d %d", &start, &end, &weight);
+            g->matrix[start][end] = weight;
+        }
+        fclose(f);
+    }
+}
+
+void print_graph(Graph *g)
+{
+    printf("Number of vertex: %d\n", g->n_vertex);
+    printf("Number of edges: %d\n", g->n_edge);
+    for (int i = 0; i < g->n_vertex; i++)
+    {
+        for (int j = 0; j < g->n_vertex; j++)
+        {
+            printf("%d ", g->matrix[i][j]);
+        }
+        printf("\n");
+    }
+}
